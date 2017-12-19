@@ -305,5 +305,33 @@ namespace SearchExtension
         {
 
         }
+
+        private void konfiguracjaKontaEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmailConfigurations m = new EmailConfigurations();
+            m.Show();
+        }
+
+        private void grafikaUżytaWProjekcieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Elementy graficzne należą do www.icons8.com i oparte są na licencji: Creative Commons Attribution-NoDerivs 3.0 Unported. Czy chcesz wejść na stronę icons8.com?", "Informacja - grafika", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://icons8.com");
+            }
+        }
+
+        private void informacjaOAutorzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+         
+            if (MessageBox.Show("Dane kontaktowe i informacje o autorze znajdziesz na stronie www.mdwojak.pl. Czy odwiedzić teraz tę stronę?", "Informacja - autor", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("www.mdwojak.pl");
+            }
+        }
+
+        private void listaEmailOdbiorcówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

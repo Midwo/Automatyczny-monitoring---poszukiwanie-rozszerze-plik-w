@@ -32,10 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.bLoadPath = new System.Windows.Forms.Button();
             this.tBPath = new System.Windows.Forms.TextBox();
+            this.bLoadPath = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lczas = new System.Windows.Forms.Label();
@@ -56,72 +57,71 @@
             this.bDeleteRecords = new System.Windows.Forms.Button();
             this.tBEditEmail = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.konfiguracjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.konfiguracjaKontaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaEmailOdbiorcówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informacjaOAutorzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grafikaUżytaWProjekcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCoIleMinut)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(5, 250);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Zobacz";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.bLoadPath);
             this.groupBox1.Controls.Add(this.tBPath);
-            this.groupBox1.Location = new System.Drawing.Point(5, 3);
+            this.groupBox1.Controls.Add(this.bLoadPath);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 241);
-            this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Podgląd listy profili:";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 22);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Ścieżka:";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 47);
+            resources.ApplyResources(this.listBox1, "listBox1");
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(295, 160);
-            this.listBox1.TabIndex = 1;
+            // 
+            // tBPath
+            // 
+            resources.ApplyResources(this.tBPath, "tBPath");
+            this.tBPath.Name = "tBPath";
             // 
             // bLoadPath
             // 
             this.bLoadPath.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bLoadPath.Location = new System.Drawing.Point(6, 213);
+            resources.ApplyResources(this.bLoadPath, "bLoadPath");
             this.bLoadPath.Name = "bLoadPath";
-            this.bLoadPath.Size = new System.Drawing.Size(296, 22);
-            this.bLoadPath.TabIndex = 0;
-            this.bLoadPath.Text = "Załaduj ścieżkę";
             this.bLoadPath.UseVisualStyleBackColor = false;
             this.bLoadPath.Click += new System.EventHandler(this.bLoadPath_Click);
-            // 
-            // tBPath
-            // 
-            this.tBPath.Enabled = false;
-            this.tBPath.Location = new System.Drawing.Point(55, 19);
-            this.tBPath.Name = "tBPath";
-            this.tBPath.Size = new System.Drawing.Size(246, 20);
-            this.tBPath.TabIndex = 2;
             // 
             // groupBox3
             // 
@@ -136,89 +136,55 @@
             this.groupBox3.Controls.Add(this.cBSekunda);
             this.groupBox3.Controls.Add(this.cBGodzina);
             this.groupBox3.Controls.Add(this.cBMinuta);
-            this.groupBox3.Location = new System.Drawing.Point(319, 3);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(380, 132);
-            this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Opcje - czas sprawdzania:";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lczas);
-            this.groupBox4.Location = new System.Drawing.Point(7, 46);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(120, 74);
-            this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Aktualny czas:";
             // 
             // lczas
             // 
-            this.lczas.AutoSize = true;
-            this.lczas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lczas.Location = new System.Drawing.Point(8, 26);
+            resources.ApplyResources(this.lczas, "lczas");
             this.lczas.Name = "lczas";
-            this.lczas.Size = new System.Drawing.Size(79, 29);
-            this.lczas.TabIndex = 8;
-            this.lczas.Text = "label2";
             // 
             // cbWybranaOpcjaSprawdzania
             // 
             this.cbWybranaOpcjaSprawdzania.FormattingEnabled = true;
             this.cbWybranaOpcjaSprawdzania.Items.AddRange(new object[] {
-            "O określonej godzinie",
-            "Co określony czas"});
-            this.cbWybranaOpcjaSprawdzania.Location = new System.Drawing.Point(6, 19);
+            resources.GetString("cbWybranaOpcjaSprawdzania.Items"),
+            resources.GetString("cbWybranaOpcjaSprawdzania.Items1")});
+            resources.ApplyResources(this.cbWybranaOpcjaSprawdzania, "cbWybranaOpcjaSprawdzania");
             this.cbWybranaOpcjaSprawdzania.Name = "cbWybranaOpcjaSprawdzania";
-            this.cbWybranaOpcjaSprawdzania.Size = new System.Drawing.Size(363, 21);
-            this.cbWybranaOpcjaSprawdzania.TabIndex = 22;
             this.cbWybranaOpcjaSprawdzania.SelectedIndexChanged += new System.EventHandler(this.cbWybranaOpcjaSprawdzania_SelectedIndexChanged);
             // 
             // lMinuty
             // 
-            this.lMinuty.AutoSize = true;
-            this.lMinuty.Enabled = false;
-            this.lMinuty.Location = new System.Drawing.Point(301, 107);
+            resources.ApplyResources(this.lMinuty, "lMinuty");
             this.lMinuty.Name = "lMinuty";
-            this.lMinuty.Size = new System.Drawing.Size(33, 13);
-            this.lMinuty.TabIndex = 21;
-            this.lMinuty.Text = "Minut";
             // 
             // lWykonujCo
             // 
-            this.lWykonujCo.AutoSize = true;
-            this.lWykonujCo.Enabled = false;
-            this.lWykonujCo.Location = new System.Drawing.Point(145, 105);
+            resources.ApplyResources(this.lWykonujCo, "lWykonujCo");
             this.lWykonujCo.Name = "lWykonujCo";
-            this.lWykonujCo.Size = new System.Drawing.Size(67, 13);
-            this.lWykonujCo.TabIndex = 20;
-            this.lWykonujCo.Text = "Wykonuj co:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(301, 47);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Sekunda:";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(223, 47);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Minuta:";
             // 
             // nUDCoIleMinut
             // 
-            this.nUDCoIleMinut.Enabled = false;
-            this.nUDCoIleMinut.Location = new System.Drawing.Point(229, 103);
+            resources.ApplyResources(this.nUDCoIleMinut, "nUDCoIleMinut");
             this.nUDCoIleMinut.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -230,8 +196,6 @@
             0,
             0});
             this.nUDCoIleMinut.Name = "nUDCoIleMinut";
-            this.nUDCoIleMinut.Size = new System.Drawing.Size(62, 20);
-            this.nUDCoIleMinut.TabIndex = 12;
             this.nUDCoIleMinut.Value = new decimal(new int[] {
             1,
             0,
@@ -240,194 +204,177 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Enabled = false;
-            this.label8.Location = new System.Drawing.Point(145, 47);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Godzina:";
             // 
             // cBSekunda
             // 
             this.cBSekunda.DropDownHeight = 290;
-            this.cBSekunda.Enabled = false;
+            resources.ApplyResources(this.cBSekunda, "cBSekunda");
             this.cBSekunda.FormattingEnabled = true;
-            this.cBSekunda.IntegralHeight = false;
             this.cBSekunda.Items.AddRange(new object[] {
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40",
-            "41",
-            "42",
-            "43",
-            "44",
-            "45",
-            "46",
-            "47",
-            "48",
-            "49",
-            "50",
-            "51",
-            "52",
-            "53",
-            "54",
-            "55",
-            "56",
-            "57",
-            "58",
-            "59"});
-            this.cBSekunda.Location = new System.Drawing.Point(304, 66);
+            resources.GetString("cBSekunda.Items"),
+            resources.GetString("cBSekunda.Items1"),
+            resources.GetString("cBSekunda.Items2"),
+            resources.GetString("cBSekunda.Items3"),
+            resources.GetString("cBSekunda.Items4"),
+            resources.GetString("cBSekunda.Items5"),
+            resources.GetString("cBSekunda.Items6"),
+            resources.GetString("cBSekunda.Items7"),
+            resources.GetString("cBSekunda.Items8"),
+            resources.GetString("cBSekunda.Items9"),
+            resources.GetString("cBSekunda.Items10"),
+            resources.GetString("cBSekunda.Items11"),
+            resources.GetString("cBSekunda.Items12"),
+            resources.GetString("cBSekunda.Items13"),
+            resources.GetString("cBSekunda.Items14"),
+            resources.GetString("cBSekunda.Items15"),
+            resources.GetString("cBSekunda.Items16"),
+            resources.GetString("cBSekunda.Items17"),
+            resources.GetString("cBSekunda.Items18"),
+            resources.GetString("cBSekunda.Items19"),
+            resources.GetString("cBSekunda.Items20"),
+            resources.GetString("cBSekunda.Items21"),
+            resources.GetString("cBSekunda.Items22"),
+            resources.GetString("cBSekunda.Items23"),
+            resources.GetString("cBSekunda.Items24"),
+            resources.GetString("cBSekunda.Items25"),
+            resources.GetString("cBSekunda.Items26"),
+            resources.GetString("cBSekunda.Items27"),
+            resources.GetString("cBSekunda.Items28"),
+            resources.GetString("cBSekunda.Items29"),
+            resources.GetString("cBSekunda.Items30"),
+            resources.GetString("cBSekunda.Items31"),
+            resources.GetString("cBSekunda.Items32"),
+            resources.GetString("cBSekunda.Items33"),
+            resources.GetString("cBSekunda.Items34"),
+            resources.GetString("cBSekunda.Items35"),
+            resources.GetString("cBSekunda.Items36"),
+            resources.GetString("cBSekunda.Items37"),
+            resources.GetString("cBSekunda.Items38"),
+            resources.GetString("cBSekunda.Items39"),
+            resources.GetString("cBSekunda.Items40"),
+            resources.GetString("cBSekunda.Items41"),
+            resources.GetString("cBSekunda.Items42"),
+            resources.GetString("cBSekunda.Items43"),
+            resources.GetString("cBSekunda.Items44"),
+            resources.GetString("cBSekunda.Items45"),
+            resources.GetString("cBSekunda.Items46"),
+            resources.GetString("cBSekunda.Items47"),
+            resources.GetString("cBSekunda.Items48"),
+            resources.GetString("cBSekunda.Items49"),
+            resources.GetString("cBSekunda.Items50"),
+            resources.GetString("cBSekunda.Items51"),
+            resources.GetString("cBSekunda.Items52"),
+            resources.GetString("cBSekunda.Items53"),
+            resources.GetString("cBSekunda.Items54"),
+            resources.GetString("cBSekunda.Items55"),
+            resources.GetString("cBSekunda.Items56"),
+            resources.GetString("cBSekunda.Items57"),
+            resources.GetString("cBSekunda.Items58"),
+            resources.GetString("cBSekunda.Items59")});
             this.cBSekunda.Name = "cBSekunda";
-            this.cBSekunda.Size = new System.Drawing.Size(65, 21);
-            this.cBSekunda.TabIndex = 16;
             // 
             // cBGodzina
             // 
             this.cBGodzina.DisplayMember = "0";
             this.cBGodzina.DropDownHeight = 290;
-            this.cBGodzina.Enabled = false;
+            resources.ApplyResources(this.cBGodzina, "cBGodzina");
             this.cBGodzina.FormattingEnabled = true;
-            this.cBGodzina.IntegralHeight = false;
             this.cBGodzina.Items.AddRange(new object[] {
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23"});
-            this.cBGodzina.Location = new System.Drawing.Point(148, 66);
+            resources.GetString("cBGodzina.Items"),
+            resources.GetString("cBGodzina.Items1"),
+            resources.GetString("cBGodzina.Items2"),
+            resources.GetString("cBGodzina.Items3"),
+            resources.GetString("cBGodzina.Items4"),
+            resources.GetString("cBGodzina.Items5"),
+            resources.GetString("cBGodzina.Items6"),
+            resources.GetString("cBGodzina.Items7"),
+            resources.GetString("cBGodzina.Items8"),
+            resources.GetString("cBGodzina.Items9"),
+            resources.GetString("cBGodzina.Items10"),
+            resources.GetString("cBGodzina.Items11"),
+            resources.GetString("cBGodzina.Items12"),
+            resources.GetString("cBGodzina.Items13"),
+            resources.GetString("cBGodzina.Items14"),
+            resources.GetString("cBGodzina.Items15"),
+            resources.GetString("cBGodzina.Items16"),
+            resources.GetString("cBGodzina.Items17"),
+            resources.GetString("cBGodzina.Items18"),
+            resources.GetString("cBGodzina.Items19"),
+            resources.GetString("cBGodzina.Items20"),
+            resources.GetString("cBGodzina.Items21"),
+            resources.GetString("cBGodzina.Items22"),
+            resources.GetString("cBGodzina.Items23")});
             this.cBGodzina.Name = "cBGodzina";
-            this.cBGodzina.Size = new System.Drawing.Size(65, 21);
-            this.cBGodzina.TabIndex = 14;
             // 
             // cBMinuta
             // 
             this.cBMinuta.DropDownHeight = 290;
-            this.cBMinuta.Enabled = false;
+            resources.ApplyResources(this.cBMinuta, "cBMinuta");
             this.cBMinuta.FormattingEnabled = true;
-            this.cBMinuta.IntegralHeight = false;
             this.cBMinuta.Items.AddRange(new object[] {
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40",
-            "41",
-            "42",
-            "43",
-            "44",
-            "45",
-            "46",
-            "47",
-            "48",
-            "49",
-            "50",
-            "51",
-            "52",
-            "53",
-            "54",
-            "55",
-            "56",
-            "57",
-            "58",
-            "59"});
-            this.cBMinuta.Location = new System.Drawing.Point(226, 66);
+            resources.GetString("cBMinuta.Items"),
+            resources.GetString("cBMinuta.Items1"),
+            resources.GetString("cBMinuta.Items2"),
+            resources.GetString("cBMinuta.Items3"),
+            resources.GetString("cBMinuta.Items4"),
+            resources.GetString("cBMinuta.Items5"),
+            resources.GetString("cBMinuta.Items6"),
+            resources.GetString("cBMinuta.Items7"),
+            resources.GetString("cBMinuta.Items8"),
+            resources.GetString("cBMinuta.Items9"),
+            resources.GetString("cBMinuta.Items10"),
+            resources.GetString("cBMinuta.Items11"),
+            resources.GetString("cBMinuta.Items12"),
+            resources.GetString("cBMinuta.Items13"),
+            resources.GetString("cBMinuta.Items14"),
+            resources.GetString("cBMinuta.Items15"),
+            resources.GetString("cBMinuta.Items16"),
+            resources.GetString("cBMinuta.Items17"),
+            resources.GetString("cBMinuta.Items18"),
+            resources.GetString("cBMinuta.Items19"),
+            resources.GetString("cBMinuta.Items20"),
+            resources.GetString("cBMinuta.Items21"),
+            resources.GetString("cBMinuta.Items22"),
+            resources.GetString("cBMinuta.Items23"),
+            resources.GetString("cBMinuta.Items24"),
+            resources.GetString("cBMinuta.Items25"),
+            resources.GetString("cBMinuta.Items26"),
+            resources.GetString("cBMinuta.Items27"),
+            resources.GetString("cBMinuta.Items28"),
+            resources.GetString("cBMinuta.Items29"),
+            resources.GetString("cBMinuta.Items30"),
+            resources.GetString("cBMinuta.Items31"),
+            resources.GetString("cBMinuta.Items32"),
+            resources.GetString("cBMinuta.Items33"),
+            resources.GetString("cBMinuta.Items34"),
+            resources.GetString("cBMinuta.Items35"),
+            resources.GetString("cBMinuta.Items36"),
+            resources.GetString("cBMinuta.Items37"),
+            resources.GetString("cBMinuta.Items38"),
+            resources.GetString("cBMinuta.Items39"),
+            resources.GetString("cBMinuta.Items40"),
+            resources.GetString("cBMinuta.Items41"),
+            resources.GetString("cBMinuta.Items42"),
+            resources.GetString("cBMinuta.Items43"),
+            resources.GetString("cBMinuta.Items44"),
+            resources.GetString("cBMinuta.Items45"),
+            resources.GetString("cBMinuta.Items46"),
+            resources.GetString("cBMinuta.Items47"),
+            resources.GetString("cBMinuta.Items48"),
+            resources.GetString("cBMinuta.Items49"),
+            resources.GetString("cBMinuta.Items50"),
+            resources.GetString("cBMinuta.Items51"),
+            resources.GetString("cBMinuta.Items52"),
+            resources.GetString("cBMinuta.Items53"),
+            resources.GetString("cBMinuta.Items54"),
+            resources.GetString("cBMinuta.Items55"),
+            resources.GetString("cBMinuta.Items56"),
+            resources.GetString("cBMinuta.Items57"),
+            resources.GetString("cBMinuta.Items58"),
+            resources.GetString("cBMinuta.Items59")});
             this.cBMinuta.Name = "cBMinuta";
-            this.cBMinuta.Size = new System.Drawing.Size(65, 21);
-            this.cBMinuta.TabIndex = 15;
             // 
             // groupBox5
             // 
@@ -436,77 +383,129 @@
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.bDeleteRecords);
             this.groupBox5.Controls.Add(this.tBEditEmail);
-            this.groupBox5.Location = new System.Drawing.Point(319, 141);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(380, 236);
-            this.groupBox5.TabIndex = 35;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Menu szukania rozszerzeń plików";
             // 
             // bEditEmail
             // 
             this.bEditEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bEditEmail.Location = new System.Drawing.Point(8, 208);
+            resources.ApplyResources(this.bEditEmail, "bEditEmail");
             this.bEditEmail.Name = "bEditEmail";
-            this.bEditEmail.Size = new System.Drawing.Size(224, 21);
-            this.bEditEmail.TabIndex = 34;
-            this.bEditEmail.Text = "Dodaj rozszerzenie";
             this.bEditEmail.UseVisualStyleBackColor = false;
             this.bEditEmail.Click += new System.EventHandler(this.bEditEmail_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(368, 157);
-            this.dataGridView1.TabIndex = 27;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 185);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(25, 13);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "Ext:";
             // 
             // bDeleteRecords
             // 
             this.bDeleteRecords.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bDeleteRecords.Location = new System.Drawing.Point(237, 181);
+            resources.ApplyResources(this.bDeleteRecords, "bDeleteRecords");
             this.bDeleteRecords.Name = "bDeleteRecords";
-            this.bDeleteRecords.Size = new System.Drawing.Size(137, 48);
-            this.bDeleteRecords.TabIndex = 26;
-            this.bDeleteRecords.Text = "Usuwanie rekordów z bazy";
             this.bDeleteRecords.UseVisualStyleBackColor = false;
             this.bDeleteRecords.Click += new System.EventHandler(this.bDeleteRecords_Click);
             // 
             // tBEditEmail
             // 
-            this.tBEditEmail.Location = new System.Drawing.Point(41, 182);
+            resources.ApplyResources(this.tBEditEmail, "tBEditEmail");
             this.tBEditEmail.Name = "tBEditEmail";
-            this.tBEditEmail.Size = new System.Drawing.Size(190, 20);
-            this.tBEditEmail.TabIndex = 29;
             this.tBEditEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBEditEmail_KeyDown);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Silver;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konfiguracjaToolStripMenuItem,
+            this.pomocToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            // 
+            // konfiguracjaToolStripMenuItem
+            // 
+            this.konfiguracjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konfiguracjaKontaEmailToolStripMenuItem,
+            this.listaEmailOdbiorcówToolStripMenuItem});
+            this.konfiguracjaToolStripMenuItem.Image = global::SearchExtension.Properties.Resources.icons8_administrative_tools_35;
+            resources.ApplyResources(this.konfiguracjaToolStripMenuItem, "konfiguracjaToolStripMenuItem");
+            this.konfiguracjaToolStripMenuItem.Name = "konfiguracjaToolStripMenuItem";
+            // 
+            // konfiguracjaKontaEmailToolStripMenuItem
+            // 
+            this.konfiguracjaKontaEmailToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.konfiguracjaKontaEmailToolStripMenuItem, "konfiguracjaKontaEmailToolStripMenuItem");
+            this.konfiguracjaKontaEmailToolStripMenuItem.Name = "konfiguracjaKontaEmailToolStripMenuItem";
+            this.konfiguracjaKontaEmailToolStripMenuItem.Click += new System.EventHandler(this.konfiguracjaKontaEmailToolStripMenuItem_Click);
+            // 
+            // listaEmailOdbiorcówToolStripMenuItem
+            // 
+            this.listaEmailOdbiorcówToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.listaEmailOdbiorcówToolStripMenuItem, "listaEmailOdbiorcówToolStripMenuItem");
+            this.listaEmailOdbiorcówToolStripMenuItem.Name = "listaEmailOdbiorcówToolStripMenuItem";
+            this.listaEmailOdbiorcówToolStripMenuItem.Click += new System.EventHandler(this.listaEmailOdbiorcówToolStripMenuItem_Click);
+            // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informacjaOAutorzeToolStripMenuItem,
+            this.grafikaUżytaWProjekcieToolStripMenuItem});
+            this.pomocToolStripMenuItem.Image = global::SearchExtension.Properties.Resources.icons8_informations_35;
+            resources.ApplyResources(this.pomocToolStripMenuItem, "pomocToolStripMenuItem");
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            // 
+            // informacjaOAutorzeToolStripMenuItem
+            // 
+            this.informacjaOAutorzeToolStripMenuItem.Name = "informacjaOAutorzeToolStripMenuItem";
+            resources.ApplyResources(this.informacjaOAutorzeToolStripMenuItem, "informacjaOAutorzeToolStripMenuItem");
+            this.informacjaOAutorzeToolStripMenuItem.Click += new System.EventHandler(this.informacjaOAutorzeToolStripMenuItem_Click);
+            // 
+            // grafikaUżytaWProjekcieToolStripMenuItem
+            // 
+            this.grafikaUżytaWProjekcieToolStripMenuItem.Name = "grafikaUżytaWProjekcieToolStripMenuItem";
+            resources.ApplyResources(this.grafikaUżytaWProjekcieToolStripMenuItem, "grafikaUżytaWProjekcieToolStripMenuItem");
+            this.grafikaUżytaWProjekcieToolStripMenuItem.Click += new System.EventHandler(this.grafikaUżytaWProjekcieToolStripMenuItem_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(704, 382);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "MD - Automatyczny monitoring danych - rozszerzenia";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -517,7 +516,12 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -549,6 +553,16 @@
         private System.Windows.Forms.Button bDeleteRecords;
         private System.Windows.Forms.TextBox tBEditEmail;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem konfiguracjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaEmailOdbiorcówToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informacjaOAutorzeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grafikaUżytaWProjekcieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konfiguracjaKontaEmailToolStripMenuItem;
     }
 }
 
