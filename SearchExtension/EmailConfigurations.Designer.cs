@@ -1,4 +1,4 @@
-﻿namespace SeachrExtension
+﻿namespace SearchExtension
 {
     partial class EmailConfigurations
     {
@@ -57,8 +57,8 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(554, 24);
-            this.menuStrip1.TabIndex = 26;
+            this.menuStrip1.Size = new System.Drawing.Size(552, 24);
+            this.menuStrip1.TabIndex = 31;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // optionsToolStripMenuItem
@@ -77,10 +77,10 @@
             this.gbmoje.Controls.Add(this.lHaslo);
             this.gbmoje.Controls.Add(this.lNazwaKonta);
             this.gbmoje.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.gbmoje.Location = new System.Drawing.Point(5, 25);
+            this.gbmoje.Location = new System.Drawing.Point(4, 24);
             this.gbmoje.Name = "gbmoje";
             this.gbmoje.Size = new System.Drawing.Size(324, 129);
-            this.gbmoje.TabIndex = 27;
+            this.gbmoje.TabIndex = 32;
             this.gbmoje.TabStop = false;
             this.gbmoje.Text = "Konfiguracja adresu e-mail";
             // 
@@ -148,10 +148,10 @@
             this.gbustawienia.Controls.Add(this.lPort);
             this.gbustawienia.Controls.Add(this.lSmtp);
             this.gbustawienia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.gbustawienia.Location = new System.Drawing.Point(335, 25);
+            this.gbustawienia.Location = new System.Drawing.Point(334, 24);
             this.gbustawienia.Name = "gbustawienia";
             this.gbustawienia.Size = new System.Drawing.Size(214, 73);
-            this.gbustawienia.TabIndex = 28;
+            this.gbustawienia.TabIndex = 33;
             this.gbustawienia.TabStop = false;
             this.gbustawienia.Text = "Konfiguracja serwera";
             // 
@@ -195,13 +195,13 @@
             // 
             this.bTest.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.bTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bTest.Image = global::SeachrExtension.Properties.Resources.icons8_report_card_50;
+            this.bTest.Image = global::SearchExtension.Properties.Resources.icons8_report_card_50;
             this.bTest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bTest.Location = new System.Drawing.Point(335, 101);
+            this.bTest.Location = new System.Drawing.Point(334, 100);
             this.bTest.Name = "bTest";
             this.bTest.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bTest.Size = new System.Drawing.Size(141, 53);
-            this.bTest.TabIndex = 30;
+            this.bTest.TabIndex = 35;
             this.bTest.Text = "Test konfiguracji";
             this.bTest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bTest.UseVisualStyleBackColor = false;
@@ -213,11 +213,11 @@
             this.bSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bSave.Image = global::SeachrExtension.Properties.Resources.icons8_checkmark_50;
-            this.bSave.Location = new System.Drawing.Point(482, 101);
+            this.bSave.Image = global::SearchExtension.Properties.Resources.icons8_checkmark_50;
+            this.bSave.Location = new System.Drawing.Point(481, 100);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(67, 53);
-            this.bSave.TabIndex = 29;
+            this.bSave.TabIndex = 34;
             this.bSave.UseVisualStyleBackColor = false;
             this.bSave.Click += new System.EventHandler(this.BSave_Click);
             // 
@@ -226,12 +226,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(554, 158);
-            this.Controls.Add(this.gbmoje);
-            this.Controls.Add(this.bTest);
-            this.Controls.Add(this.gbustawienia);
-            this.Controls.Add(this.bSave);
+            this.ClientSize = new System.Drawing.Size(552, 157);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.gbmoje);
+            this.Controls.Add(this.gbustawienia);
+            this.Controls.Add(this.bTest);
+            this.Controls.Add(this.bSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -259,12 +259,12 @@
         private System.Windows.Forms.Label lPodpis;
         private System.Windows.Forms.Label lHaslo;
         private System.Windows.Forms.Label lNazwaKonta;
-        private System.Windows.Forms.Button bTest;
         private System.Windows.Forms.GroupBox gbustawienia;
         private System.Windows.Forms.TextBox tbPort;
         private System.Windows.Forms.TextBox tbSmtp;
         private System.Windows.Forms.Label lPort;
         private System.Windows.Forms.Label lSmtp;
+        private System.Windows.Forms.Button bTest;
         private System.Windows.Forms.Button bSave;
     }
 }

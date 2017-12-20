@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeachrExtension
+namespace SearchExtension
 {
     class ListExtension
     {
@@ -14,6 +14,5 @@ namespace SeachrExtension
             public string Extension { get; set; }
 
         }
-
     }
 }

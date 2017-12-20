@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SeachrExtension
+namespace SearchExtension
 {
     public partial class EmailConfigurations : Form
     {
         public EmailConfigurations()
         {
             InitializeComponent();
+
             Microsoft.Win32.RegistryKey key;
             key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
             try
@@ -48,12 +49,6 @@ namespace SeachrExtension
             }
             key.Close();
 
-        }
-
-        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tbPort.Text = "587";
-            tbSmtp.Text = "smtp.gmail.com";
         }
 
         private void BTest_Click(object sender, EventArgs e)
@@ -152,5 +147,12 @@ namespace SeachrExtension
                 }
             }
         }
+
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbPort.Text = "587";
+            tbSmtp.Text = "smtp.gmail.com";
+        }
     }
+   
 }

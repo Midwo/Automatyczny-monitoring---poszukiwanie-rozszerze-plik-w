@@ -1,6 +1,6 @@
-﻿namespace SeachrExtension
+﻿namespace SearchExtension
 {
-    partial class ListEmail
+    partial class BookEmails
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListEmail));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookEmails));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tBIDDelete = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tBAdresDelete = new System.Windows.Forms.TextBox();
+            this.bDelete = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tBIDEdit = new System.Windows.Forms.TextBox();
+            this.bEdit = new System.Windows.Forms.Button();
             this.tBAdresEdit = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tBAddEmail = new System.Windows.Forms.TextBox();
+            this.bAddEmail = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.bDelete = new System.Windows.Forms.Button();
-            this.bEdit = new System.Windows.Forms.Button();
-            this.bAddEmail = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(638, 24);
-            this.menuStrip1.TabIndex = 27;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // groupBox4
             // 
@@ -71,10 +62,10 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.tBAdresDelete);
             this.groupBox4.Controls.Add(this.bDelete);
-            this.groupBox4.Location = new System.Drawing.Point(337, 111);
+            this.groupBox4.Location = new System.Drawing.Point(336, 109);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(294, 79);
-            this.groupBox4.TabIndex = 38;
+            this.groupBox4.TabIndex = 43;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Usuwanie adresów:";
             // 
@@ -113,6 +104,21 @@
             this.tBAdresDelete.TabIndex = 32;
             this.tBAdresDelete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBAdresDelete_KeyDown);
             // 
+            // bDelete
+            // 
+            this.bDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bDelete.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bDelete.Enabled = false;
+            this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDelete.Image = global::SearchExtension.Properties.Resources.icons8_denied_50;
+            this.bDelete.Location = new System.Drawing.Point(238, 21);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(50, 49);
+            this.bDelete.TabIndex = 1;
+            this.bDelete.UseVisualStyleBackColor = false;
+            this.bDelete.Click += new System.EventHandler(this.BDelete_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label3);
@@ -120,10 +126,10 @@
             this.groupBox3.Controls.Add(this.tBIDEdit);
             this.groupBox3.Controls.Add(this.bEdit);
             this.groupBox3.Controls.Add(this.tBAdresEdit);
-            this.groupBox3.Location = new System.Drawing.Point(337, 27);
+            this.groupBox3.Location = new System.Drawing.Point(336, 25);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(294, 78);
-            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabIndex = 42;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Edytowanie adresów:";
             // 
@@ -153,6 +159,20 @@
             this.tBIDEdit.Size = new System.Drawing.Size(182, 20);
             this.tBIDEdit.TabIndex = 39;
             // 
+            // bEdit
+            // 
+            this.bEdit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bEdit.Enabled = false;
+            this.bEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bEdit.Image = global::SearchExtension.Properties.Resources.icons8_edit_profile_50;
+            this.bEdit.Location = new System.Drawing.Point(238, 19);
+            this.bEdit.Name = "bEdit";
+            this.bEdit.Size = new System.Drawing.Size(50, 49);
+            this.bEdit.TabIndex = 36;
+            this.bEdit.UseVisualStyleBackColor = false;
+            this.bEdit.Click += new System.EventHandler(this.BEdit_Click);
+            // 
             // tBAdresEdit
             // 
             this.tBAdresEdit.Location = new System.Drawing.Point(51, 48);
@@ -166,10 +186,10 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tBAddEmail);
             this.groupBox2.Controls.Add(this.bAddEmail);
-            this.groupBox2.Location = new System.Drawing.Point(337, 196);
+            this.groupBox2.Location = new System.Drawing.Point(336, 194);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(294, 73);
-            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dodaj do listy:";
             // 
@@ -190,13 +210,27 @@
             this.tBAddEmail.TabIndex = 30;
             this.tBAddEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBAddEmail_KeyDown);
             // 
+            // bAddEmail
+            // 
+            this.bAddEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bAddEmail.BackgroundImage = global::SearchExtension.Properties.Resources.icons8_add_user_male_50;
+            this.bAddEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bAddEmail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bAddEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAddEmail.Location = new System.Drawing.Point(238, 16);
+            this.bAddEmail.Name = "bAddEmail";
+            this.bAddEmail.Size = new System.Drawing.Size(50, 49);
+            this.bAddEmail.TabIndex = 29;
+            this.bAddEmail.UseVisualStyleBackColor = false;
+            this.bAddEmail.Click += new System.EventHandler(this.BAddEmail_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 27);
+            this.groupBox1.Location = new System.Drawing.Point(5, 25);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(325, 242);
-            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista E-mail działu IT";
             // 
@@ -210,55 +244,21 @@
             this.dataGridView2.TabIndex = 35;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
             // 
-            // bDelete
+            // menuStrip1
             // 
-            this.bDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bDelete.BackgroundImage = global::SeachrExtension.Properties.Resources.icons8_denied_50;
-            this.bDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bDelete.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bDelete.Enabled = false;
-            this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelete.Location = new System.Drawing.Point(238, 21);
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(50, 49);
-            this.bDelete.TabIndex = 1;
-            this.bDelete.UseVisualStyleBackColor = false;
-            this.bDelete.Click += new System.EventHandler(this.BDelete_Click);
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(635, 24);
+            this.menuStrip1.TabIndex = 39;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // bEdit
-            // 
-            this.bEdit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bEdit.BackgroundImage = global::SeachrExtension.Properties.Resources.icons8_edit_profile_50;
-            this.bEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bEdit.Enabled = false;
-            this.bEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEdit.Location = new System.Drawing.Point(238, 19);
-            this.bEdit.Name = "bEdit";
-            this.bEdit.Size = new System.Drawing.Size(50, 49);
-            this.bEdit.TabIndex = 36;
-            this.bEdit.UseVisualStyleBackColor = false;
-            this.bEdit.Click += new System.EventHandler(this.BEdit_Click);
-            // 
-            // bAddEmail
-            // 
-            this.bAddEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bAddEmail.BackgroundImage = global::SeachrExtension.Properties.Resources.icons8_add_user_male_50;
-            this.bAddEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bAddEmail.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bAddEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAddEmail.Location = new System.Drawing.Point(238, 16);
-            this.bAddEmail.Name = "bAddEmail";
-            this.bAddEmail.Size = new System.Drawing.Size(50, 49);
-            this.bAddEmail.TabIndex = 29;
-            this.bAddEmail.UseVisualStyleBackColor = false;
-            this.bAddEmail.Click += new System.EventHandler(this.BAddEmail_Click);
-            // 
-            // ListEmail
+            // BookEmails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(638, 274);
+            this.ClientSize = new System.Drawing.Size(635, 271);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -267,8 +267,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ListEmail";
+            this.Name = "BookEmails";
             this.Text = "MD - Lista E-mail odbiorców";
+            this.Load += new System.EventHandler(this.BookEmails_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -284,7 +285,6 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tBIDDelete;
@@ -303,5 +303,6 @@
         private System.Windows.Forms.Button bAddEmail;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

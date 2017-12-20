@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SeachrExtension.Program;
+using static SearchExtension.Program;
 
-namespace SeachrExtension
+namespace SearchExtension
 {
     public partial class Form1 : Form
     {
@@ -43,46 +43,71 @@ namespace SeachrExtension
 
                     listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
 
-                    using (var db = new ExtensionContext())
-                    {
-
-                        var query = from c in db.ExtensionDB
-
-                                    select new { c.ListId, c.Extension };
-
-                        var listWithQuery = query.OrderByDescending(h => h.ListId).ToList();
-
-                        dataGridView1.DataSource = listWithQuery;
-
-
-                    }
-                    this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                    this.dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    RefleshDataGrid();
                 }
             }
         }
         string StringExtension;
 
-        public void RefleshDataGrid()
+        private void Button1_Click(object sender, EventArgs e)
         {
+
+            //try
+            //{
+            //    // Only get files that begin with the letter "c."
+            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
+            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
+            //    MessageBox.Show(x);
+            //    foreach (string dir in dirs)
+            //    {
+            //        MessageBox.Show(dir);
+            //    }
+            //}
+            //catch (Exception x)
+            //{
+            //    string y = String.Format("The process failed: {0}", x.ToString());
+            //    MessageBox.Show(y);
+            //}
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+            string path = key.GetValue("Path").ToString();
+
             using (var db = new ExtensionContext())
             {
                 var query = from c in db.ExtensionDB
 
-                            select new { Id = c.ListId, c.Extension };
+                            select new { c.Extension };
 
-                var results = query.OrderByDescending(h => h.Id).ToList();
-
-                dataGridView1.DataSource = results;
-
-
+                foreach (var item in query)
+                {
+                    StringExtension += "|*." + item.Extension + "";
+                }
             }
+
+            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
+            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
+            MessageBox.Show(files.Length.ToString());
+            foreach (var item in files)
+            {
+                MessageBox.Show(item.ToString());
+            }
+
+        }
+
+        public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
+        {
+            string[] searchPatterns = searchPattern.Split('|');
+            List<string> files = new List<string>();
+            foreach (string sp in searchPatterns)
+                files.AddRange(System.IO.Directory.GetFiles(path, sp, searchOption));
+            files.Sort();
+            return files.ToArray();
+
         }
 
         private void ListaEmailOdbiorcówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            ListEmail m = new ListEmail();
+            BookEmails m = new BookEmails();
             m.Show();
         }
 
@@ -90,6 +115,7 @@ namespace SeachrExtension
         {
             EmailConfigurations m = new EmailConfigurations();
             m.Show();
+
         }
 
         private void InformacjaOAutorzeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,58 +233,32 @@ namespace SeachrExtension
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BAddExt_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Only get files that begin with the letter "c."
-            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
-            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
-            //    MessageBox.Show(x);
-            //    foreach (string dir in dirs)
-            //    {
-            //        MessageBox.Show(dir);
-            //    }
-            //}
-            //catch (Exception x)
-            //{
-            //    string y = String.Format("The process failed: {0}", x.ToString());
-            //    MessageBox.Show(y);
-            //}
-            Microsoft.Win32.RegistryKey key;
-            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
-            string path = key.GetValue("Path").ToString();
+            using (var db = new ExtensionContext())
+            {
+                var Record = new ListExtension.List { Extension = tBEditEmail.Text.Trim() };
+                db.ExtensionDB.Add(Record);
+                db.SaveChanges();
+            }
+            RefleshDataGrid();
+        }
 
+        public void RefleshDataGrid()
+        {
             using (var db = new ExtensionContext())
             {
                 var query = from c in db.ExtensionDB
 
-                            select new { c.Extension };
+                            select new { Id = c.ListId, c.Extension };
 
-                foreach (var item in query)
-                {
-                    StringExtension += "|*." + item.Extension + "";
-                }
+                var results = query.OrderByDescending(h => h.Id).ToList();
+
+                dataGridView1.DataSource = results;
+                this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             }
-
-            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
-            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
-            MessageBox.Show(files.Length.ToString());
-            foreach (var item in files)
-            {
-                MessageBox.Show(item.ToString());
-            }
-        }
-
-        public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
-        {
-            string[] searchPatterns = searchPattern.Split('|');
-            List<string> files = new List<string>();
-            foreach (string sp in searchPatterns)
-                files.AddRange(System.IO.Directory.GetFiles(path, sp, searchOption));
-            files.Sort();
-            return files.ToArray();
-
         }
 
         private void BDeleteRecords_Click(object sender, EventArgs e)
@@ -286,27 +286,6 @@ namespace SeachrExtension
                 }
                 RefleshDataGrid();
             }
-        }
-
-        private void BEditEmail_Click(object sender, EventArgs e)
-        {
-            using (var db = new ExtensionContext())
-            {
-
-                var Record = new ListExtension.List { Extension = tBEditEmail.Text.Trim() };
-
-                db.ExtensionDB.Add(Record);
-                db.SaveChanges();
-
-            }
-
-
-            RefleshDataGrid();
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
