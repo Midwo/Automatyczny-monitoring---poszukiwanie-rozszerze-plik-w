@@ -1,4 +1,4 @@
-﻿namespace SearchExtension
+﻿namespace SeachrExtension
 {
     partial class EmailConfigurations
     {
@@ -29,32 +29,50 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmailConfigurations));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbmoje = new System.Windows.Forms.GroupBox();
-            this.mtbHaslo = new System.Windows.Forms.MaskedTextBox();
-            this.tbPodpis = new System.Windows.Forms.TextBox();
-            this.tbNazwaKonta = new System.Windows.Forms.TextBox();
+            this.mtbPassword = new System.Windows.Forms.MaskedTextBox();
+            this.tbSignature = new System.Windows.Forms.TextBox();
+            this.tbNameAccount = new System.Windows.Forms.TextBox();
             this.lPodpis = new System.Windows.Forms.Label();
             this.lHaslo = new System.Windows.Forms.Label();
             this.lNazwaKonta = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbustawienia = new System.Windows.Forms.GroupBox();
             this.tbPort = new System.Windows.Forms.TextBox();
             this.tbSmtp = new System.Windows.Forms.TextBox();
             this.lPort = new System.Windows.Forms.Label();
             this.lSmtp = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bZapisz = new System.Windows.Forms.Button();
+            this.bTest = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
             this.gbmoje.SuspendLayout();
             this.gbustawienia.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(554, 24);
+            this.menuStrip1.TabIndex = 26;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(198, 20);
+            this.optionsToolStripMenuItem.Text = "Załaduj konfiguracje poczty gmail";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
             // 
             // gbmoje
             // 
-            this.gbmoje.Controls.Add(this.mtbHaslo);
-            this.gbmoje.Controls.Add(this.tbPodpis);
-            this.gbmoje.Controls.Add(this.tbNazwaKonta);
+            this.gbmoje.Controls.Add(this.mtbPassword);
+            this.gbmoje.Controls.Add(this.tbSignature);
+            this.gbmoje.Controls.Add(this.tbNameAccount);
             this.gbmoje.Controls.Add(this.lPodpis);
             this.gbmoje.Controls.Add(this.lHaslo);
             this.gbmoje.Controls.Add(this.lNazwaKonta);
@@ -62,36 +80,36 @@
             this.gbmoje.Location = new System.Drawing.Point(5, 25);
             this.gbmoje.Name = "gbmoje";
             this.gbmoje.Size = new System.Drawing.Size(324, 129);
-            this.gbmoje.TabIndex = 21;
+            this.gbmoje.TabIndex = 27;
             this.gbmoje.TabStop = false;
             this.gbmoje.Text = "Konfiguracja adresu e-mail";
             // 
-            // mtbHaslo
+            // mtbPassword
             // 
-            this.mtbHaslo.Location = new System.Drawing.Point(66, 59);
-            this.mtbHaslo.Name = "mtbHaslo";
-            this.mtbHaslo.PasswordChar = '*';
-            this.mtbHaslo.Size = new System.Drawing.Size(252, 23);
-            this.mtbHaslo.TabIndex = 6;
-            this.mtbHaslo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mtbPassword.Location = new System.Drawing.Point(66, 59);
+            this.mtbPassword.Name = "mtbPassword";
+            this.mtbPassword.PasswordChar = '*';
+            this.mtbPassword.Size = new System.Drawing.Size(252, 23);
+            this.mtbPassword.TabIndex = 6;
+            this.mtbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbPodpis
+            // tbSignature
             // 
-            this.tbPodpis.Location = new System.Drawing.Point(66, 97);
-            this.tbPodpis.Name = "tbPodpis";
-            this.tbPodpis.Size = new System.Drawing.Size(252, 23);
-            this.tbPodpis.TabIndex = 5;
-            this.tbPodpis.Text = "Your signature";
-            this.tbPodpis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSignature.Location = new System.Drawing.Point(66, 97);
+            this.tbSignature.Name = "tbSignature";
+            this.tbSignature.Size = new System.Drawing.Size(252, 23);
+            this.tbSignature.TabIndex = 5;
+            this.tbSignature.Text = "Your signature";
+            this.tbSignature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbNazwaKonta
+            // tbNameAccount
             // 
-            this.tbNazwaKonta.Location = new System.Drawing.Point(65, 22);
-            this.tbNazwaKonta.Name = "tbNazwaKonta";
-            this.tbNazwaKonta.Size = new System.Drawing.Size(253, 23);
-            this.tbNazwaKonta.TabIndex = 3;
-            this.tbNazwaKonta.Text = "xyz@gmail.com";
-            this.tbNazwaKonta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNameAccount.Location = new System.Drawing.Point(65, 22);
+            this.tbNameAccount.Name = "tbNameAccount";
+            this.tbNameAccount.Size = new System.Drawing.Size(253, 23);
+            this.tbNameAccount.TabIndex = 3;
+            this.tbNameAccount.Text = "xyz@gmail.com";
+            this.tbNameAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lPodpis
             // 
@@ -123,16 +141,6 @@
             this.lNazwaKonta.TabIndex = 0;
             this.lNazwaKonta.Text = "Nazwa:";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(335, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 53);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Test konfiguracji";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // gbustawienia
             // 
             this.gbustawienia.Controls.Add(this.tbPort);
@@ -142,8 +150,8 @@
             this.gbustawienia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.gbustawienia.Location = new System.Drawing.Point(335, 25);
             this.gbustawienia.Name = "gbustawienia";
-            this.gbustawienia.Size = new System.Drawing.Size(194, 73);
-            this.gbustawienia.TabIndex = 22;
+            this.gbustawienia.Size = new System.Drawing.Size(214, 73);
+            this.gbustawienia.TabIndex = 28;
             this.gbustawienia.TabStop = false;
             this.gbustawienia.Text = "Konfiguracja serwera";
             // 
@@ -151,7 +159,7 @@
             // 
             this.tbPort.Location = new System.Drawing.Point(56, 44);
             this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(131, 23);
+            this.tbPort.Size = new System.Drawing.Size(152, 23);
             this.tbPort.TabIndex = 3;
             this.tbPort.Text = "587";
             this.tbPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -160,7 +168,7 @@
             // 
             this.tbSmtp.Location = new System.Drawing.Point(56, 17);
             this.tbSmtp.Name = "tbSmtp";
-            this.tbSmtp.Size = new System.Drawing.Size(131, 23);
+            this.tbSmtp.Size = new System.Drawing.Size(152, 23);
             this.tbSmtp.TabIndex = 2;
             this.tbSmtp.Text = "smtp.gmail.com";
             this.tbSmtp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -183,55 +191,58 @@
             this.lSmtp.TabIndex = 0;
             this.lSmtp.Text = "SMTP:";
             // 
-            // menuStrip1
+            // bTest
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(533, 24);
-            this.menuStrip1.TabIndex = 25;
-            this.menuStrip1.Text = "menuStrip1";
+            this.bTest.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bTest.Image = global::SeachrExtension.Properties.Resources.icons8_report_card_50;
+            this.bTest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bTest.Location = new System.Drawing.Point(335, 101);
+            this.bTest.Name = "bTest";
+            this.bTest.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bTest.Size = new System.Drawing.Size(141, 53);
+            this.bTest.TabIndex = 30;
+            this.bTest.Text = "Test konfiguracji";
+            this.bTest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bTest.UseVisualStyleBackColor = false;
+            this.bTest.Click += new System.EventHandler(this.BTest_Click);
             // 
-            // optionsToolStripMenuItem
+            // bSave
             // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(198, 20);
-            this.optionsToolStripMenuItem.Text = "Załaduj konfiguracje poczty gmail";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-            // 
-            // bZapisz
-            // 
-            this.bZapisz.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bZapisz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bZapisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bZapisz.Location = new System.Drawing.Point(464, 101);
-            this.bZapisz.Name = "bZapisz";
-            this.bZapisz.Size = new System.Drawing.Size(66, 53);
-            this.bZapisz.TabIndex = 23;
-            this.bZapisz.UseVisualStyleBackColor = false;
+            this.bSave.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bSave.Image = global::SeachrExtension.Properties.Resources.icons8_checkmark_50;
+            this.bSave.Location = new System.Drawing.Point(482, 101);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(67, 53);
+            this.bSave.TabIndex = 29;
+            this.bSave.UseVisualStyleBackColor = false;
+            this.bSave.Click += new System.EventHandler(this.BSave_Click);
             // 
             // EmailConfigurations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(533, 159);
+            this.ClientSize = new System.Drawing.Size(554, 158);
             this.Controls.Add(this.gbmoje);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bTest);
             this.Controls.Add(this.gbustawienia);
+            this.Controls.Add(this.bSave);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.bZapisz);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "EmailConfigurations";
             this.Text = "MD - Konfiguracja konta E-mail nadawcy";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.gbmoje.ResumeLayout(false);
             this.gbmoje.PerformLayout();
             this.gbustawienia.ResumeLayout(false);
             this.gbustawienia.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,21 +250,21 @@
 
         #endregion
 
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.GroupBox gbmoje;
-        private System.Windows.Forms.MaskedTextBox mtbHaslo;
-        private System.Windows.Forms.TextBox tbPodpis;
-        private System.Windows.Forms.TextBox tbNazwaKonta;
+        private System.Windows.Forms.MaskedTextBox mtbPassword;
+        private System.Windows.Forms.TextBox tbSignature;
+        private System.Windows.Forms.TextBox tbNameAccount;
         private System.Windows.Forms.Label lPodpis;
         private System.Windows.Forms.Label lHaslo;
         private System.Windows.Forms.Label lNazwaKonta;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bTest;
         private System.Windows.Forms.GroupBox gbustawienia;
         private System.Windows.Forms.TextBox tbPort;
         private System.Windows.Forms.TextBox tbSmtp;
         private System.Windows.Forms.Label lPort;
         private System.Windows.Forms.Label lSmtp;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.Button bZapisz;
+        private System.Windows.Forms.Button bSave;
     }
 }

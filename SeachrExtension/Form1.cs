@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SearchExtension.Program;
+using static SeachrExtension.Program;
 
-namespace SearchExtension
+namespace SeachrExtension
 {
     public partial class Form1 : Form
     {
@@ -47,80 +47,68 @@ namespace SearchExtension
                     {
 
                         var query = from c in db.ExtensionDB
-                                 
+
                                     select new { c.ListId, c.Extension };
 
-                        var listWithQuery = query.ToList();
+                        var listWithQuery = query.OrderByDescending(h => h.ListId).ToList();
 
                         dataGridView1.DataSource = listWithQuery;
-                       
+
+
                     }
+                    this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                    this.dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
         }
+        string StringExtension;
 
-       string StringExtension;
-
-
-
-
-        private void button1_Click(object sender, EventArgs e)
+        public void RefleshDataGrid()
         {
-
-            //try
-            //{
-            //    // Only get files that begin with the letter "c."
-            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
-            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
-            //    MessageBox.Show(x);
-            //    foreach (string dir in dirs)
-            //    {
-            //        MessageBox.Show(dir);
-            //    }
-            //}
-            //catch (Exception x)
-            //{
-            //    string y = String.Format("The process failed: {0}", x.ToString());
-            //    MessageBox.Show(y);
-            //}
-            Microsoft.Win32.RegistryKey key;
-            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
-            string path = key.GetValue("Path").ToString();
-
             using (var db = new ExtensionContext())
             {
                 var query = from c in db.ExtensionDB
 
-                            select new { c.Extension };
+                            select new { Id = c.ListId, c.Extension };
 
-                foreach (var item in query)
-                {
-                    StringExtension += "|*." + item.Extension + "";
-                }
-            }
+                var results = query.OrderByDescending(h => h.Id).ToList();
 
-            StringExtension = StringExtension.Substring(1, StringExtension.Length -1);
-                Array files = GetFiles(@"" + path + "", ""+StringExtension+"", SearchOption.AllDirectories);
-            MessageBox.Show(files.Length.ToString());
-            foreach (var item in files)
-            {
-                MessageBox.Show(item.ToString());
+                dataGridView1.DataSource = results;
+
+
             }
         }
 
-
-        public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
+        private void ListaEmailOdbiorcówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string[] searchPatterns = searchPattern.Split('|');
-            List<string> files = new List<string>();
-            foreach (string sp in searchPatterns)
-                files.AddRange(System.IO.Directory.GetFiles(path, sp, searchOption));
-            files.Sort();
-            return files.ToArray();
 
+            ListEmail m = new ListEmail();
+            m.Show();
         }
 
-        private void bLoadPath_Click(object sender, EventArgs e)
+        private void KonfiguracjaKontaEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmailConfigurations m = new EmailConfigurations();
+            m.Show();
+        }
+
+        private void InformacjaOAutorzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Dane kontaktowe i informacje o autorze znajdziesz na stronie www.mdwojak.pl. Czy odwiedzić teraz tę stronę?", "Informacja - autor", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("www.mdwojak.pl");
+            }
+        }
+
+        private void GrafikaUżytaWProjekcieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Elementy graficzne należą do www.icons8.com i oparte są na licencji: Creative Commons Attribution-NoDerivs 3.0 Unported. Czy chcesz wejść na stronę icons8.com?", "Informacja - grafika", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://icons8.com");
+            }
+        }
+
+        private void BLoadPath_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -190,9 +178,8 @@ namespace SearchExtension
             }
         }
 
-        private void cbWybranaOpcjaSprawdzania_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbWybranaOpcjaSprawdzania_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // wyłączenie / włączenie opcji sprawdzania o danej godznie albo co jakiś czas
             if (cbWybranaOpcjaSprawdzania.SelectedIndex == 0)
             {
                 cBGodzina.Enabled = true;
@@ -220,68 +207,69 @@ namespace SearchExtension
             }
         }
 
-        private void bEditEmail_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            using (var db = new ExtensionContext())
-            {
+            //try
+            //{
+            //    // Only get files that begin with the letter "c."
+            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
+            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
+            //    MessageBox.Show(x);
+            //    foreach (string dir in dirs)
+            //    {
+            //        MessageBox.Show(dir);
+            //    }
+            //}
+            //catch (Exception x)
+            //{
+            //    string y = String.Format("The process failed: {0}", x.ToString());
+            //    MessageBox.Show(y);
+            //}
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+            string path = key.GetValue("Path").ToString();
 
-                var Record = new ListExtension.List { Extension = tBEditEmail.Text.Trim() };
-
-                db.ExtensionDB.Add(Record);
-                db.SaveChanges();
-
-            }
-
-
-            using (var db = new ExtensionContext())
-            {
-                var query = from c in db.ExtensionDB
-
-                            select new { Id = c.ListId, c.Extension };
-
-                var results = query.ToList();
-
-                dataGridView1.DataSource = results;
-
-
-            }
-        }
-
-        public void RefleshDataGrid()
-        {
             using (var db = new ExtensionContext())
             {
                 var query = from c in db.ExtensionDB
 
-                            select new { Id = c.ListId, c.Extension };
+                            select new { c.Extension };
 
-                var results = query.ToList();
-
-                dataGridView1.DataSource = results;
-
-
+                foreach (var item in query)
+                {
+                    StringExtension += "|*." + item.Extension + "";
+                }
             }
-        }
 
-
-        private void tBEditEmail_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
+            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
+            MessageBox.Show(files.Length.ToString());
+            foreach (var item in files)
             {
-                bEditEmail_Click(sender, null);
+                MessageBox.Show(item.ToString());
             }
         }
 
-        private void bDeleteRecords_Click(object sender, EventArgs e)
+        public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
-     
+            string[] searchPatterns = searchPattern.Split('|');
+            List<string> files = new List<string>();
+            foreach (string sp in searchPatterns)
+                files.AddRange(System.IO.Directory.GetFiles(path, sp, searchOption));
+            files.Sort();
+            return files.ToArray();
+
+        }
+
+        private void BDeleteRecords_Click(object sender, EventArgs e)
+        {
             using (var db = new ExtensionContext())
             {
 
                 var query = from c in db.ExtensionDB
 
                             select new { c.ListId };
-               
+
                 if (query.ToList().Count >= 1)
                 {
                     foreach (var item in query)
@@ -298,38 +286,25 @@ namespace SearchExtension
                 }
                 RefleshDataGrid();
             }
-
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void BEditEmail_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void konfiguracjaKontaEmailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EmailConfigurations m = new EmailConfigurations();
-            m.Show();
-        }
-
-        private void grafikaUżytaWProjekcieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Elementy graficzne należą do www.icons8.com i oparte są na licencji: Creative Commons Attribution-NoDerivs 3.0 Unported. Czy chcesz wejść na stronę icons8.com?", "Informacja - grafika", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            using (var db = new ExtensionContext())
             {
-                System.Diagnostics.Process.Start("https://icons8.com");
+
+                var Record = new ListExtension.List { Extension = tBEditEmail.Text.Trim() };
+
+                db.ExtensionDB.Add(Record);
+                db.SaveChanges();
+
             }
+
+
+            RefleshDataGrid();
         }
 
-        private void informacjaOAutorzeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-         
-            if (MessageBox.Show("Dane kontaktowe i informacje o autorze znajdziesz na stronie www.mdwojak.pl. Czy odwiedzić teraz tę stronę?", "Informacja - autor", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-            {
-                System.Diagnostics.Process.Start("www.mdwojak.pl");
-            }
-        }
-
-        private void listaEmailOdbiorcówToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
 
         }

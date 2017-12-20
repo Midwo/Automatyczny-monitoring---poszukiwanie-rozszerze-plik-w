@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13A6D0F2-267F-42AC-B764-7D9189A90F14}</ProjectGuid>
+    <ProjectGuid>{3A830EFD-C123-41DD-9F2C-22FD7A7AF9D7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SearchExtension</RootNamespace>
-    <AssemblyName>SearchExtension</AssemblyName>
+    <RootNamespace>SeachrExtension</RootNamespace>
+    <AssemblyName>SeachrExtension</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,11 +34,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -66,33 +64,40 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListEmail.Designer.cs">
+      <DependentUpon>ListEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListEmails.cs" />
     <Compile Include="ListExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EmailConfigurations.resx">
       <DependentUpon>EmailConfigurations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.aa-DJ.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListEmail.resx">
+      <DependentUpon>ListEmail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -103,22 +108,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-administrative-tools-351.png" />
+    <None Include="Resources\icons8-edit-profile-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-open-50%281%29.png" />
+    <None Include="Resources\icons8-denied-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-user-male-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-administrative-tools-35.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-information-35.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-informations-35.png" />
+    <None Include="Resources\icons8-open-50%281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-info-35.png" />
+    <None Include="Resources\icons8-report-card-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DSC_0921.JPG" />
+    <None Include="Resources\icons8-checkmark-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

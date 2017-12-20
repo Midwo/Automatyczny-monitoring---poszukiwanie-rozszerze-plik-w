@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SearchExtension.Properties
+namespace SeachrExtension.Properties
 {
 
 

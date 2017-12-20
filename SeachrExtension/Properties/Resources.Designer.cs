@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SearchExtension.Properties {
+namespace SeachrExtension.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SearchExtension.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SearchExtension.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeachrExtension.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,6 +63,16 @@ namespace SearchExtension.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_user_male_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-user-male-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_administrative_tools_35 {
             get {
                 object obj = ResourceManager.GetObject("icons8-administrative-tools-35", resourceCulture);
@@ -73,9 +83,9 @@ namespace SearchExtension.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_administrative_tools_50 {
+        internal static System.Drawing.Bitmap icons8_checkmark_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-administrative-tools-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-checkmark-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +93,19 @@ namespace SearchExtension.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_info_35 {
+        internal static System.Drawing.Bitmap icons8_denied_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-info-35", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-denied-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_profile_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-profile-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,26 +123,6 @@ namespace SearchExtension.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_informations_35 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-informations-35", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_open_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-open-50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_open_50_1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-open-50(1)", resourceCulture);
@@ -133,9 +133,9 @@ namespace SearchExtension.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_open_50_1_1 {
+        internal static System.Drawing.Bitmap icons8_report_card_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-open-50(1)1", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-report-card-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
