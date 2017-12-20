@@ -49,51 +49,6 @@ namespace SearchExtension
         }
         string StringExtension;
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-            //try
-            //{
-            //    // Only get files that begin with the letter "c."
-            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
-            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
-            //    MessageBox.Show(x);
-            //    foreach (string dir in dirs)
-            //    {
-            //        MessageBox.Show(dir);
-            //    }
-            //}
-            //catch (Exception x)
-            //{
-            //    string y = String.Format("The process failed: {0}", x.ToString());
-            //    MessageBox.Show(y);
-            //}
-            Microsoft.Win32.RegistryKey key;
-            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
-            string path = key.GetValue("Path").ToString();
-
-            using (var db = new ExtensionContext())
-            {
-                var query = from c in db.ExtensionDB
-
-                            select new { c.Extension };
-
-                foreach (var item in query)
-                {
-                    StringExtension += "|*." + item.Extension + "";
-                }
-            }
-
-            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
-            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
-            MessageBox.Show(files.Length.ToString());
-            foreach (var item in files)
-            {
-                MessageBox.Show(item.ToString());
-            }
-
-        }
-
         public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
             string[] searchPatterns = searchPattern.Split('|');
@@ -237,7 +192,7 @@ namespace SearchExtension
         {
             using (var db = new ExtensionContext())
             {
-                var Record = new ListExtension.List { Extension = tBEditEmail.Text.Trim() };
+                var Record = new ListExtension.List { Extension = tBAddExt.Text.Trim() };
                 db.ExtensionDB.Add(Record);
                 db.SaveChanges();
             }
@@ -263,6 +218,9 @@ namespace SearchExtension
 
         private void BDeleteRecords_Click(object sender, EventArgs e)
         {
+            tBExtId.Clear();
+            tBEditExt.Clear();
+
             using (var db = new ExtensionContext())
             {
 
@@ -285,6 +243,118 @@ namespace SearchExtension
                     }
                 }
                 RefleshDataGrid();
+            }
+        }
+
+        private void RRun_Click(object sender, EventArgs e)
+        {
+
+            //try
+            //{
+            //    // Only get files that begin with the letter "c."
+            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
+            //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
+            //    MessageBox.Show(x);
+            //    foreach (string dir in dirs)
+            //    {
+            //        MessageBox.Show(dir);
+            //    }
+            //}
+            //catch (Exception x)
+            //{
+            //    string y = String.Format("The process failed: {0}", x.ToString());
+            //    MessageBox.Show(y);
+            //}
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+            string path = key.GetValue("Path").ToString();
+
+            using (var db = new ExtensionContext())
+            {
+                var query = from c in db.ExtensionDB
+
+                            select new { c.Extension };
+
+                foreach (var item in query)
+                {
+                    StringExtension += "|*." + item.Extension + "";
+                }
+            }
+
+            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
+            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
+            MessageBox.Show(files.Length.ToString());
+            foreach (var item in files)
+            {
+                MessageBox.Show(item.ToString());
+            }
+        }
+
+        private void TBAddExt_TextChanged(object sender, EventArgs e)
+        {
+            tBAddExt.Clear();
+        }
+
+        private void TBAddExt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BAddExt_Click(sender, e);
+            }
+        }
+
+        private void TBAddExt_TextChanged_1(object sender, EventArgs e)
+        {
+            tBAddExt.Clear();
+        }
+
+        private void TBAddExt_Click(object sender, EventArgs e)
+        {
+            tBAddExt.Clear();
+        }
+
+        private void BEditExt_Click(object sender, EventArgs e)
+        {
+            if (tBEditExt.Text.Trim() != string.Empty || tBEditExt.Text.Trim() != "")
+            {
+                int id = Convert.ToInt32(tBExtId.Text);
+                string text = tBEditExt.Text.Trim();
+
+                using (var db = new ExtensionContext())
+                {
+                    var result = db.ExtensionDB.SingleOrDefault(b => b.ListId == id);
+                    if (result != null)
+                    {
+                        result.Extension = text;
+                        db.SaveChanges();
+                    }
+                }
+            }
+
+            RefleshDataGrid();
+            
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                tBEditExt.Enabled = true;
+                tBExtId.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+                tBEditExt.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            tBAddExt.Enabled = true;
+        }
+
+        private void TBEditExt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BEditExt_Click(sender, e);
             }
         }
     }

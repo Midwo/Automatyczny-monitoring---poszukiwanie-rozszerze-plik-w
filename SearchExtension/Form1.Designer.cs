@@ -40,16 +40,16 @@
             this.nUDCoIleMinut = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tBExtId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bEditExt = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tBEditExt = new System.Windows.Forms.TextBox();
             this.bAddExt = new System.Windows.Forms.Button();
             this.bDeleteRecords = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
-            this.tBEditEmail = new System.Windows.Forms.TextBox();
+            this.tBAddExt = new System.Windows.Forms.TextBox();
             this.cBGodzina = new System.Windows.Forms.ComboBox();
             this.cBMinuta = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,17 +60,19 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button1 = new System.Windows.Forms.Button();
             this.konfiguracjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.konfiguracjaKontaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListaEmailOdbiorcówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informacjaOAutorzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grafikaUżytaWProjekcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bLoadPath = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bRun = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCoIleMinut)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -79,6 +81,8 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -86,7 +90,7 @@
             this.groupBox4.Controls.Add(this.lczas);
             this.groupBox4.Location = new System.Drawing.Point(7, 46);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(120, 74);
+            this.groupBox4.Size = new System.Drawing.Size(120, 77);
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Aktualny czas:";
@@ -96,7 +100,7 @@
             this.lczas.AutoSize = true;
             this.lczas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lczas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lczas.Location = new System.Drawing.Point(8, 26);
+            this.lczas.Location = new System.Drawing.Point(8, 28);
             this.lczas.Name = "lczas";
             this.lczas.Size = new System.Drawing.Size(79, 29);
             this.lczas.TabIndex = 8;
@@ -119,7 +123,7 @@
             this.lMinuty.AutoSize = true;
             this.lMinuty.Enabled = false;
             this.lMinuty.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lMinuty.Location = new System.Drawing.Point(301, 107);
+            this.lMinuty.Location = new System.Drawing.Point(301, 106);
             this.lMinuty.Name = "lMinuty";
             this.lMinuty.Size = new System.Drawing.Size(33, 13);
             this.lMinuty.TabIndex = 21;
@@ -130,7 +134,7 @@
             this.lWykonujCo.AutoSize = true;
             this.lWykonujCo.Enabled = false;
             this.lWykonujCo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lWykonujCo.Location = new System.Drawing.Point(145, 105);
+            this.lWykonujCo.Location = new System.Drawing.Point(145, 104);
             this.lWykonujCo.Name = "lWykonujCo";
             this.lWykonujCo.Size = new System.Drawing.Size(67, 13);
             this.lWykonujCo.TabIndex = 20;
@@ -161,7 +165,7 @@
             // nUDCoIleMinut
             // 
             this.nUDCoIleMinut.Enabled = false;
-            this.nUDCoIleMinut.Location = new System.Drawing.Point(229, 103);
+            this.nUDCoIleMinut.Location = new System.Drawing.Point(229, 102);
             this.nUDCoIleMinut.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -194,76 +198,75 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Controls.Add(this.bAddExt);
+            this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Controls.Add(this.groupBox2);
             this.groupBox5.Controls.Add(this.bDeleteRecords);
             this.groupBox5.Controls.Add(this.dataGridView1);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.tBEditEmail);
-            this.groupBox5.Location = new System.Drawing.Point(389, 44);
+            this.groupBox5.Location = new System.Drawing.Point(390, 44);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(536, 218);
+            this.groupBox5.Size = new System.Drawing.Size(427, 254);
             this.groupBox5.TabIndex = 49;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Menu szukania rozszerzeń plików";
             // 
-            // textBox2
+            // tBExtId
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(382, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 20);
-            this.textBox2.TabIndex = 38;
+            this.tBExtId.Enabled = false;
+            this.tBExtId.Location = new System.Drawing.Point(46, 15);
+            this.tBExtId.Name = "tBExtId";
+            this.tBExtId.Size = new System.Drawing.Size(148, 20);
+            this.tBExtId.TabIndex = 38;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(357, 89);
+            this.label9.Location = new System.Drawing.Point(22, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(19, 13);
             this.label9.TabIndex = 39;
             this.label9.Text = "Id:";
             // 
-            // button2
+            // bEditExt
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(341, 139);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 33);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Edytuj/Wpisz E-mail";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bEditExt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bEditExt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bEditExt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.bEditExt.Location = new System.Drawing.Point(5, 67);
+            this.bEditExt.Name = "bEditExt";
+            this.bEditExt.Size = new System.Drawing.Size(189, 33);
+            this.bEditExt.TabIndex = 37;
+            this.bEditExt.Text = "Edytuj/Wpisz E-mail";
+            this.bEditExt.UseVisualStyleBackColor = false;
+            this.bEditExt.Click += new System.EventHandler(this.BEditExt_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(337, 113);
+            this.label3.Location = new System.Drawing.Point(2, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 36;
             this.label3.Text = "Edytuj:";
             // 
-            // textBox1
+            // tBEditExt
             // 
-            this.textBox1.Location = new System.Drawing.Point(382, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 20);
-            this.textBox1.TabIndex = 35;
+            this.tBEditExt.Enabled = false;
+            this.tBEditExt.Location = new System.Drawing.Point(46, 41);
+            this.tBEditExt.Name = "tBEditExt";
+            this.tBEditExt.Size = new System.Drawing.Size(148, 20);
+            this.tBEditExt.TabIndex = 35;
+            this.tBEditExt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBEditExt_KeyDown);
             // 
             // bAddExt
             // 
             this.bAddExt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bAddExt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAddExt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bAddExt.Location = new System.Drawing.Point(341, 43);
+            this.bAddExt.Location = new System.Drawing.Point(5, 45);
             this.bAddExt.Name = "bAddExt";
-            this.bAddExt.Size = new System.Drawing.Size(190, 32);
+            this.bAddExt.Size = new System.Drawing.Size(189, 32);
             this.bAddExt.TabIndex = 34;
             this.bAddExt.Text = "Dodaj rozszerzenie";
             this.bAddExt.UseVisualStyleBackColor = false;
@@ -272,12 +275,13 @@
             // bDeleteRecords
             // 
             this.bDeleteRecords.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bDeleteRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bDeleteRecords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bDeleteRecords.Location = new System.Drawing.Point(340, 177);
+            this.bDeleteRecords.Location = new System.Drawing.Point(6, 214);
             this.bDeleteRecords.Name = "bDeleteRecords";
-            this.bDeleteRecords.Size = new System.Drawing.Size(190, 34);
+            this.bDeleteRecords.Size = new System.Drawing.Size(415, 34);
             this.bDeleteRecords.TabIndex = 26;
-            this.bDeleteRecords.Text = "Usuwanie rekordów z bazy";
+            this.bDeleteRecords.Text = "Usuń wszystkie rekordy";
             this.bDeleteRecords.UseVisualStyleBackColor = false;
             this.bDeleteRecords.Click += new System.EventHandler(this.BDeleteRecords_Click);
             // 
@@ -286,26 +290,29 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 20);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(328, 190);
+            this.dataGridView1.Size = new System.Drawing.Size(208, 190);
             this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(340, 18);
+            this.label11.Location = new System.Drawing.Point(4, 20);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 13);
             this.label11.TabIndex = 33;
             this.label11.Text = "Ext:";
             // 
-            // tBEditEmail
+            // tBAddExt
             // 
-            this.tBEditEmail.Location = new System.Drawing.Point(371, 15);
-            this.tBEditEmail.Name = "tBEditEmail";
-            this.tBEditEmail.Size = new System.Drawing.Size(159, 20);
-            this.tBEditEmail.TabIndex = 29;
-            this.tBEditEmail.Text = "np: mp4";
+            this.tBAddExt.Location = new System.Drawing.Point(35, 17);
+            this.tBAddExt.Name = "tBAddExt";
+            this.tBAddExt.Size = new System.Drawing.Size(159, 20);
+            this.tBAddExt.TabIndex = 29;
+            this.tBAddExt.Text = "np: mp4";
+            this.tBAddExt.Click += new System.EventHandler(this.TBAddExt_Click);
+            this.tBAddExt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBAddExt_KeyDown);
             // 
             // cBGodzina
             // 
@@ -537,7 +544,7 @@
             this.groupBox3.Controls.Add(this.cBSekunda);
             this.groupBox3.Controls.Add(this.cBGodzina);
             this.groupBox3.Controls.Add(this.cBMinuta);
-            this.groupBox3.Location = new System.Drawing.Point(3, 238);
+            this.groupBox3.Location = new System.Drawing.Point(4, 238);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(380, 132);
             this.groupBox3.TabIndex = 48;
@@ -553,53 +560,10 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(929, 43);
+            this.menuStrip1.Size = new System.Drawing.Size(821, 43);
             this.menuStrip1.Stretch = false;
             this.menuStrip1.TabIndex = 44;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.tBPath);
-            this.groupBox1.Controls.Add(this.bLoadPath);
-            this.groupBox1.Location = new System.Drawing.Point(3, 44);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 192);
-            this.groupBox1.TabIndex = 47;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Podgląd listy profili:";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.Silver;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 374);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(929, 22);
-            this.statusStrip1.TabIndex = 45;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(138, 17);
-            this.toolStripStatusLabel1.Text = "Status: Nie uruchomiony";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(389, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 66);
-            this.button1.TabIndex = 46;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // konfiguracjaToolStripMenuItem
             // 
@@ -657,6 +621,20 @@
             this.grafikaUżytaWProjekcieToolStripMenuItem.Text = "Grafika użyta w projekcie";
             this.grafikaUżytaWProjekcieToolStripMenuItem.Click += new System.EventHandler(this.GrafikaUżytaWProjekcieToolStripMenuItem_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.tBPath);
+            this.groupBox1.Controls.Add(this.bLoadPath);
+            this.groupBox1.Location = new System.Drawing.Point(4, 44);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(380, 192);
+            this.groupBox1.TabIndex = 47;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Podgląd listy profili:";
+            // 
             // bLoadPath
             // 
             this.bLoadPath.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -670,18 +648,76 @@
             this.bLoadPath.UseVisualStyleBackColor = false;
             this.bLoadPath.Click += new System.EventHandler(this.BLoadPath_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Silver;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 373);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(821, 22);
+            this.statusStrip1.TabIndex = 45;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(138, 17);
+            this.toolStripStatusLabel1.Text = "Status: Nie uruchomiony";
+            // 
+            // bRun
+            // 
+            this.bRun.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bRun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.bRun.Location = new System.Drawing.Point(390, 303);
+            this.bRun.Name = "bRun";
+            this.bRun.Size = new System.Drawing.Size(427, 66);
+            this.bRun.TabIndex = 46;
+            this.bRun.Text = "Uruchom";
+            this.bRun.UseVisualStyleBackColor = false;
+            this.bRun.Click += new System.EventHandler(this.RRun_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.bAddExt);
+            this.groupBox2.Controls.Add(this.tBAddExt);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Location = new System.Drawing.Point(220, 14);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 84);
+            this.groupBox2.TabIndex = 50;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dodaj rozszerzenie:";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.bEditExt);
+            this.groupBox6.Controls.Add(this.tBExtId);
+            this.groupBox6.Controls.Add(this.tBEditExt);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Location = new System.Drawing.Point(221, 104);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 107);
+            this.groupBox6.TabIndex = 50;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Edycja rozszerzenia:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(929, 396);
+            this.ClientSize = new System.Drawing.Size(821, 395);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bRun);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -690,7 +726,6 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCoIleMinut)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -700,6 +735,10 @@
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -717,16 +756,16 @@
         private System.Windows.Forms.NumericUpDown nUDCoIleMinut;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tBExtId;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bEditExt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tBEditExt;
         private System.Windows.Forms.Button bAddExt;
         private System.Windows.Forms.Button bDeleteRecords;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tBEditEmail;
+        private System.Windows.Forms.TextBox tBAddExt;
         private System.Windows.Forms.ComboBox cBGodzina;
         private System.Windows.Forms.ComboBox cBMinuta;
         private System.Windows.Forms.Label label2;
@@ -747,7 +786,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bRun;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
