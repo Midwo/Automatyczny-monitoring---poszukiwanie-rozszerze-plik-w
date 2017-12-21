@@ -342,7 +342,7 @@ namespace SearchExtension
                     keyx.SetValue("Second", cBSekunda.SelectedItem);
                     keyx.SetValue("NumericMinute", nUDCoIleMinut.Value);
                     keyx.Close();
-
+                    toolStripStatusLabel1.Text = "Status: Uruchomiony";
                 }
             }
             else if (cbWybranaOpcjaSprawdzania.SelectedIndex == 1)
@@ -358,6 +358,7 @@ namespace SearchExtension
                 keyx.SetValue("Second", cBSekunda.SelectedItem);
                 keyx.SetValue("NumericMinute", nUDCoIleMinut.Value);
                 keyx.Close();
+                toolStripStatusLabel1.Text = "Status: Uruchomiony";
 
             }
             //try
@@ -455,7 +456,7 @@ namespace SearchExtension
             {
                 if (DateTime.Now > Reflesh)
                 {
-                    Reflesh = DateTime.Now.AddSeconds(15);
+                    Reflesh = DateTime.Now.AddSeconds(30);
                     listBox1.Items.Clear();
                     string[] files = Directory.GetFiles(tBPath.Text);
                     string[] dirs = Directory.GetDirectories(tBPath.Text);
@@ -548,7 +549,7 @@ namespace SearchExtension
                                 }
                                 msg.IsBodyHtml = true;
 
-                                msg.Subject = "Ticekt - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
+                                msg.Subject = "Ticket - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
                                 msg.Body = "Wykryto pliki spełniające kryteria wyszukiwania po rozszerzeniach w ilości: " + quantityFileWithExt + ", w lokalizacjach:  <br><br>";
                                 foreach (var item in files)
                                 {
@@ -556,7 +557,7 @@ namespace SearchExtension
                                 }
 
                                 mailServer.Send(msg);
-
+                                toolStripStatusLabel1.Text = "Status: Uruchomiony - wykonano sprawdzenie: " + DateTime.Now.ToString() + "";
                             }
                             catch (Exception ex)
                             {
@@ -630,7 +631,7 @@ namespace SearchExtension
                                 }
                                 msg.IsBodyHtml = true;
 
-                                msg.Subject = "Ticekt - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
+                                msg.Subject = "Ticket - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
                                 msg.Body = "Wykryto pliki spełniające kryteria wyszukiwania po rozszerzeniach w ilości: " + quantityFileWithExt + ", w lokalizacjach:  <br><br>";
                                 foreach (var item in files)
                                 {
@@ -638,7 +639,7 @@ namespace SearchExtension
                                 }
 
                                 mailServer.Send(msg);
-
+                                toolStripStatusLabel1.Text = "Status: Uruchomiony - wykonano sprawdzenie: " + DateTime.Now.ToString() +"";
                             }
                             catch (Exception ex)
                             {
