@@ -531,6 +531,10 @@
             this.cBSekunda.Size = new System.Drawing.Size(65, 21);
             this.cBSekunda.TabIndex = 16;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.groupBox4);

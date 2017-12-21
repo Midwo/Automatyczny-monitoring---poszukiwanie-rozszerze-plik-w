@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +19,8 @@ namespace SearchExtension
         public Form1()
         {
             InitializeComponent();
+
+            timer1.Start();
 
             Microsoft.Win32.RegistryKey key;
             key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
@@ -44,10 +48,32 @@ namespace SearchExtension
                     listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
 
                     RefleshDataGrid();
+
+
+
+                    if (key.GetValue("Hour") != null && key.GetValue("Minute") != null && key.GetValue("Second") != null)
+                    {
+                        cBGodzina.SelectedItem = key.GetValue("Hour");
+                        cBMinuta.SelectedItem = key.GetValue("Minute");
+                        cBSekunda.SelectedItem = key.GetValue("Second");
+                    }
+                    if (key.GetValue("NumericMinute") != null)
+                    {
+                        nUDCoIleMinut.Value = Convert.ToDecimal(key.GetValue("NumericMinute"));
+                    }
                 }
+                
             }
+            key.Close();
         }
+
         string StringExtension;
+        int BookEmails;
+        int Extensions;
+        bool TimerActiveButton = false;
+        string mergeCombobox;
+        DateTime DateMonit;
+        DateTime Reflesh;
 
         public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
@@ -249,10 +275,95 @@ namespace SearchExtension
         private void RRun_Click(object sender, EventArgs e)
         {
 
+            using (var db = new ExtensionContext())
+            {
+
+                var query = from c in db.ExtensionDB
+                           
+                            select new {c.Extension };
+
+                Extensions = query.Count();
+            }
+            using (var db = new ExtensionContext())
+            {
+
+                var query = from c in db.ListEmailsDB
+
+                            select new { c.AdresseEmail };
+
+                BookEmails = query.Count();
+            }
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+            object o = key.GetValue("Password");
+            key.Close();
+
+            if (o == null)
+            {
+                MessageBox.Show("Musisz skonfigurować ustawienia konta email wysyłającego wiadomości", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+            else if (Extensions < 1)
+            {
+                MessageBox.Show("Musisz wprowadzić listę rozszerzeń, którą zamierzasz szukać", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+            else if(BookEmails < 1)
+            {
+                MessageBox.Show("Musisz wprowadzić listę osób odbierających wiadomość - użyj menu", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+            else if (cbWybranaOpcjaSprawdzania.SelectedIndex == -1)
+            {
+                MessageBox.Show("Musisz wybrać combobox 'Opcje - czas sprawdzania'", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cbWybranaOpcjaSprawdzania.SelectedIndex == 0)
+            { 
+
+                if (cBGodzina.SelectedItem == null || cBMinuta.SelectedItem == null
+                   || cBSekunda.SelectedItem == null)
+
+                {
+                    MessageBox.Show("Uzupełnij czas sprawdzenia - 'Opcje - czas sprawdzania'", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    TimerActiveButton = true;
+                    DateMonit = DateTime.Now.AddSeconds(Convert.ToDouble(nUDCoIleMinut.Value));
+                    bRun.Text = "Uruchomiony";
+                    mergeCombobox = cBGodzina.SelectedItem + ":" + cBMinuta.SelectedItem + ":" + cBSekunda.SelectedItem;
+
+                    Microsoft.Win32.RegistryKey keyx;
+                    keyx = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+                    keyx.SetValue("Hour", cBGodzina.SelectedItem);
+                    keyx.SetValue("Minute", cBMinuta.SelectedItem);
+                    keyx.SetValue("Second", cBSekunda.SelectedItem);
+                    keyx.SetValue("NumericMinute", nUDCoIleMinut.Value);
+                    keyx.Close();
+
+                }
+            }
+            else if (cbWybranaOpcjaSprawdzania.SelectedIndex == 1)
+            {
+                 TimerActiveButton = true;
+                 DateMonit = DateTime.Now.AddSeconds(Convert.ToDouble(nUDCoIleMinut.Value));
+                 bRun.Text = "Uruchomiony";
+
+                Microsoft.Win32.RegistryKey keyx;
+                keyx = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+                keyx.SetValue("Hour", cBGodzina.SelectedItem);
+                keyx.SetValue("Minute", cBMinuta.SelectedItem);
+                keyx.SetValue("Second", cBSekunda.SelectedItem);
+                keyx.SetValue("NumericMinute", nUDCoIleMinut.Value);
+                keyx.Close();
+
+            }
             //try
             //{
             //    // Only get files that begin with the letter "c."
-            //    string[] dirs = Directory.GetFiles(@"C:\Users\micha\Downloads", "*.mp4|*.jpg");
+            //    string[] dirs = Directory.GetFiles(@"C:\Users\micsha\Downloads", "*.mp4|*.jpg");
             //    string x = String.Format("The number of files starting with c is {0}.", dirs.Length);
             //    MessageBox.Show(x);
             //    foreach (string dir in dirs)
@@ -265,29 +376,7 @@ namespace SearchExtension
             //    string y = String.Format("The process failed: {0}", x.ToString());
             //    MessageBox.Show(y);
             //}
-            Microsoft.Win32.RegistryKey key;
-            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
-            string path = key.GetValue("Path").ToString();
 
-            using (var db = new ExtensionContext())
-            {
-                var query = from c in db.ExtensionDB
-
-                            select new { c.Extension };
-
-                foreach (var item in query)
-                {
-                    StringExtension += "|*." + item.Extension + "";
-                }
-            }
-
-            StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
-            Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
-            MessageBox.Show(files.Length.ToString());
-            foreach (var item in files)
-            {
-                MessageBox.Show(item.ToString());
-            }
         }
 
         private void TBAddExt_TextChanged(object sender, EventArgs e)
@@ -356,6 +445,214 @@ namespace SearchExtension
             {
                 BEditExt_Click(sender, e);
             }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            lczas.Text = DateTime.Now.ToLongTimeString();
+
+            if (TimerActiveButton == true)
+            {
+                if (DateTime.Now > Reflesh)
+                {
+                    Reflesh = DateTime.Now.AddSeconds(15);
+                    listBox1.Items.Clear();
+                    string[] files = Directory.GetFiles(tBPath.Text);
+                    string[] dirs = Directory.GetDirectories(tBPath.Text);
+
+                    foreach (string item2 in dirs)
+                    {
+
+                        FileInfo f = new FileInfo(item2);
+
+
+                        DirectoryInfo dir = new DirectoryInfo(item2);
+
+                        var x = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(file => file.Length);
+
+
+                        listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
+
+                        RefleshDataGrid();
+
+                    }
+                }
+
+
+
+                var startData = DateTime.Now.ToString("hh.mm.ss.ffffff");
+
+                if (cbWybranaOpcjaSprawdzania.SelectedIndex == 0)
+                {
+
+                    DateTime changeCombine = DateTime.Parse((DateMonit.ToString("yyyy/MM/dd") + " " + mergeCombobox));
+
+                    if (changeCombine <= DateTime.Now)
+                    {
+
+                        DateMonit = DateTime.Parse((DateTime.Now.AddDays(1).ToString("yyyy/MM/dd") + " " + mergeCombobox));
+
+
+
+                        StringExtension = string.Empty;
+
+                        string path = tBPath.Text;
+
+                        using (var db = new ExtensionContext())
+                        {
+                            var query = from c in db.ExtensionDB
+
+                                        select new { c.Extension };
+
+                            foreach (var item in query)
+                            {
+                                StringExtension += "|*." + item.Extension + "";
+                            }
+                        }
+
+                        StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
+                        Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
+                        int quantityFileWithExt = files.Length;
+
+
+                        if (quantityFileWithExt > 0)
+                        {
+
+                            Microsoft.Win32.RegistryKey key;
+                            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+                            try
+                            {
+
+                                int port = Int32.Parse(key.GetValue("Port").ToString());
+                                SmtpClient mailServer = new SmtpClient(key.GetValue("SMTP").ToString(), port);
+                                mailServer.EnableSsl = true;
+
+                                mailServer.Credentials = new System.Net.NetworkCredential(key.GetValue("Name").ToString(), key.GetValue("Password").ToString());
+
+                                MailMessage msg = new MailMessage();
+                                msg.From = new MailAddress(key.GetValue("Name").ToString(), key.GetValue("Signature").ToString());
+
+
+                                using (var db = new ExtensionContext())
+                                {
+
+                                    var query = from c in db.ListEmailsDB
+                                                select new { c.AdresseEmail };
+
+                                    foreach (var item in query)
+                                    {
+
+                                        msg.To.Add(item.AdresseEmail);
+                                    }
+
+                                }
+                                msg.IsBodyHtml = true;
+
+                                msg.Subject = "Ticekt - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
+                                msg.Body = "Wykryto pliki spełniające kryteria wyszukiwania po rozszerzeniach w ilości: " + quantityFileWithExt + ", w lokalizacjach:  <br><br>";
+                                foreach (var item in files)
+                                {
+                                    msg.Body += item.ToString() + "<br>";
+                                }
+
+                                mailServer.Send(msg);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            key.Close();
+                        }
+
+
+                    }
+                }
+                else if (cbWybranaOpcjaSprawdzania.SelectedIndex == 1)
+                {
+
+                    if (DateMonit <= DateTime.Now)
+                    {
+                        DateMonit = DateTime.Now.AddMinutes(Convert.ToDouble(nUDCoIleMinut.Value));
+
+
+                        StringExtension = string.Empty;
+
+                        string path = tBPath.Text;
+
+                        using (var db = new ExtensionContext())
+                        {
+                            var query = from c in db.ExtensionDB
+
+                                        select new { c.Extension };
+
+                            foreach (var item in query)
+                            {
+                                StringExtension += "|*." + item.Extension + "";
+                            }
+                        }
+
+                        StringExtension = StringExtension.Substring(1, StringExtension.Length - 1);
+                        Array files = GetFiles(@"" + path + "", "" + StringExtension + "", SearchOption.AllDirectories);
+                        int quantityFileWithExt = files.Length;
+
+
+                        if (quantityFileWithExt > 0)
+                        {
+
+                            Microsoft.Win32.RegistryKey key;
+                            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("MD - Monitoring plikow");
+                            try
+                            {
+
+                                int port = Int32.Parse(key.GetValue("Port").ToString());
+                                SmtpClient mailServer = new SmtpClient(key.GetValue("SMTP").ToString(), port);
+                                mailServer.EnableSsl = true;
+
+                                mailServer.Credentials = new System.Net.NetworkCredential(key.GetValue("Name").ToString(), key.GetValue("Password").ToString());
+
+                                MailMessage msg = new MailMessage();
+                                msg.From = new MailAddress(key.GetValue("Name").ToString(), key.GetValue("Signature").ToString());
+
+
+                                using (var db = new ExtensionContext())
+                                {
+
+                                    var query = from c in db.ListEmailsDB
+                                                select new { c.AdresseEmail };
+
+                                    foreach (var item in query)
+                                    {
+
+                                        msg.To.Add(item.AdresseEmail);
+                                    }
+
+                                }
+                                msg.IsBodyHtml = true;
+
+                                msg.Subject = "Ticekt - Wykryto, pliki spełniające kryteria, data: " + DateTime.Now.ToString() + "";
+                                msg.Body = "Wykryto pliki spełniające kryteria wyszukiwania po rozszerzeniach w ilości: " + quantityFileWithExt + ", w lokalizacjach:  <br><br>";
+                                foreach (var item in files)
+                                {
+                                    msg.Body += item.ToString() + "<br>";
+                                }
+
+                                mailServer.Send(msg);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            key.Close();
+                        }
+
+                    }
+                }
+            }
+
+
+
         }
     }
 }
