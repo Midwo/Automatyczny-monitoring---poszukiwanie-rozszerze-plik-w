@@ -45,7 +45,7 @@ namespace SearchExtension
                     var x = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(file => file.Length);
 
 
-                    listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
+                    listBox1.Items.Add(f.Name + " waga: " + x / 1024 / 1024 + "MB");
 
                     RefleshDataGrid();
 
@@ -139,7 +139,7 @@ namespace SearchExtension
                     var x = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(file => file.Length);
 
 
-                    listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
+                    listBox1.Items.Add(f.Name + " waga: " + x / 1024 / 1024 + "MB");
                     //using (var db = new UsersContext())
                     //{
 
@@ -472,7 +472,7 @@ namespace SearchExtension
                         var x = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(file => file.Length);
 
 
-                        listBox1.Items.Add(f.Name + " waga profilu: " + x / 1024 / 1024 + "MB");
+                        listBox1.Items.Add(f.Name + " waga: " + x / 1024 / 1024 + "MB");
 
                         RefleshDataGrid();
 

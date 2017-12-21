@@ -212,16 +212,16 @@
             // tBExtId
             // 
             this.tBExtId.Enabled = false;
-            this.tBExtId.Location = new System.Drawing.Point(46, 15);
+            this.tBExtId.Location = new System.Drawing.Point(34, 15);
             this.tBExtId.Name = "tBExtId";
-            this.tBExtId.Size = new System.Drawing.Size(148, 20);
+            this.tBExtId.Size = new System.Drawing.Size(160, 20);
             this.tBExtId.TabIndex = 38;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(22, 18);
+            this.label9.Location = new System.Drawing.Point(9, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(19, 13);
             this.label9.TabIndex = 39;
@@ -244,18 +244,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(2, 44);
+            this.label3.Location = new System.Drawing.Point(6, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 36;
-            this.label3.Text = "Edytuj:";
+            this.label3.Text = "Ext:";
             // 
             // tBEditExt
             // 
             this.tBEditExt.Enabled = false;
-            this.tBEditExt.Location = new System.Drawing.Point(46, 41);
+            this.tBEditExt.Location = new System.Drawing.Point(34, 41);
             this.tBEditExt.Name = "tBEditExt";
-            this.tBEditExt.Size = new System.Drawing.Size(148, 20);
+            this.tBEditExt.Size = new System.Drawing.Size(160, 20);
             this.tBEditExt.TabIndex = 35;
             this.tBEditExt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBEditExt_KeyDown);
             // 
